@@ -14,9 +14,9 @@ ENV STENCIL_HTTP_PORT 8080
 ENV STENCIL_TEMPLATE_DIR /templates
 ENV STENCIL_JAVA_OPTIONS -XX:+PrintFlagsFinal
 
-VOLUME /templates
+#VOLUME /templates
 
 WORKDIR /myapp
 COPY --from=build-env /usr/src/myapp/myapp-standalone.jar /myapp/myapp.jar
 ENTRYPOINT java $STENCIL_JAVA_OPTIONS -jar /myapp/myapp.jar
-EXPOSE 8080
+#EXPOSE 8080
