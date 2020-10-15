@@ -30,6 +30,11 @@ them to make the template more readable.
 - Repeating blocks in the template
 - Dynamically show/hide rows and columns in tables
 
+## Docker-compose deployment
+
+You must have docker and docker-compose installed
+
+Run ./docker-deploy.sh to start deployment
 
 ## Getting Started with the Library
 
