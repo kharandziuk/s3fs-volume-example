@@ -17,7 +17,8 @@ services:
      container_name: "stencil"
      #build:
      #  context: ./service
-     image: stencili:latest
+     #image: stencili:latest
+     image: ghcr.io/oleksandrtimoshenko/stencil.stencil:latest
      ports:
       - 8080:8080
      depends_on:
