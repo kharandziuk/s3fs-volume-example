@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  s3vol:
+    container_name: "s3vol"
+    image: elementar/s3-volume
+    environment:
+      BACKUP_INTERVAL: ${BUCKUP_INTERVAL}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      BUCKET_NAME: ${BUCKET_NAME}
+    command: /data s3://${BUCKET_NAME}
+    volumes:
+      - s3data:/data
+
+  stencili:
+     container_name: "stencil"
+     #build:
+     #  context: ./service
+     #image: stencili:latest
+     image: ghcr.io/oleksandrtimoshenko/stencil.stencil:latest
+     ports:
+      - 8080:8080
+     depends_on:
+        - s3vol
+     volumes:
+     - 's3data:/templates'
+
+volumes:
+  s3data:
